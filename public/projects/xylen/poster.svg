@@ -1,0 +1,27 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <rect x="60" y="60" width="1800" height="960" rx="16" fill="#111111" stroke="#1A1A1A" stroke-width="2"/>
+  <!-- Chart area -->
+  <rect x="100" y="100" width="1200" height="600" rx="12" fill="#0D0D0D"/>
+  <!-- Grid lines -->
+  <line x1="100" y1="250" x2="1300" y2="250" stroke="#1A1A1A" stroke-dasharray="4 4"/>
+  <line x1="100" y1="400" x2="1300" y2="400" stroke="#1A1A1A" stroke-dasharray="4 4"/>
+  <line x1="100" y1="550" x2="1300" y2="550" stroke="#1A1A1A" stroke-dasharray="4 4"/>
+  <!-- Chart line -->
+  <path d="M120 500 L300 450 L500 480 L700 350 L900 380 L1100 280 L1280 320" 
+        stroke="#00FF66" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Gradient fill -->
+  <defs>
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00FF66;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#00FF66;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <path d="M120 500 L300 450 L500 480 L700 350 L900 380 L1100 280 L1280 320 L1280 700 L120 700 Z" 
+        fill="url(#chartGrad)"/>
+  <!-- Side panel -->
+  <rect x="1350" y="100" width="450" height="600" rx="12" fill="#0D0D0D"/>
+  <rect x="1380" y="130" width="390" height="60" rx="8" fill="#1A1A1A"/>
+  <rect x="1380" y="210" width="390" height="100" rx="8" fill="#00FF66" fill-opacity="0.1"/>
+  <text x="960" y="900" text-anchor="middle" font-family="monospace" font-size="24" fill="#444444">Project Xylen - ML Trading</text>
+</svg>
