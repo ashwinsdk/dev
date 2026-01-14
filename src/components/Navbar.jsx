@@ -291,7 +291,7 @@ export default function Navbar() {
                                     className="flex items-center justify-between w-full px-6 py-4 bg-neon-500 text-dark-900 rounded-lg font-mono font-semibold group"
                                 >
                                     <span>GET IN TOUCH</span>
-                                    <div className="p-2 bg-dark-500 rounded group-hover:bg-dark-400 transition-colors">
+                                    <div className="p-2 bg-light-500 rounded group-hover:bg-dark-400 transition-colors">
                                         <ArrowRight className="w-5 h-5" />
                                     </div>
                                 </a>

@@ -31,7 +31,7 @@ export default function Footer() {
                         </div>
 
                         <p className="text-sm text-white/40 text-center lg:text-left">
-                            © {currentYear} Ashwin SDK. All rights reserved.
+                            © {currentYear} ashwinsdk. All rights reserved.
                         </p>
                     </div>
 
@@ -83,11 +83,11 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="mt-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-white/30">
+                {/* <div className="mt-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-white/30">
                     <span className="flex items-center gap-2">
                         Built with <Heart className="w-3 h-3 text-red-500" /> using React, Three.js & Tailwind
                     </span>
-                </div>
+                </div> */}
             </div>
         </footer>
     )

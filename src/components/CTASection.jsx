@@ -43,7 +43,7 @@ export default function CTASection() {
                     >
                         Get Started
                         <br />
-                        <span className="text-gradient-neon font-normal">With Ashwin</span>
+                        <span className="text-gradient-neon font-normal">With Me</span>
                     </motion.h2>
 
                     {/* Description */}
@@ -68,7 +68,7 @@ export default function CTASection() {
                             whileTap={{ scale: 0.98 }}
                         >
                             <Mail className="w-5 h-5" />
-                            {contact.email}
+                            {/* {contact.email} */} contact
                             <ArrowRight className="w-5 h-5" />
                         </motion.a>
 

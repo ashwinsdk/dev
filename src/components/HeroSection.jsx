@@ -1,10 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowDown, Github } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { variants } from '../lib/motion'
 import { contact } from '../data/projects'
+import PlanetLayer from './PlanetLayer'
+import NoiseOverlay from './NoiseOverlay'
+
+const SpaceBackground = lazy(() => import('./SpaceBackground'))
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -34,8 +38,18 @@ export default function HeroSection() {
         <section
             ref={sectionRef}
             id="hero"
-            className="relative min-h-screen flex items-center justify-center"
+            className="relative min-h-screen flex items-center justify-center overflow-hidden"
         >
+            {/* Hero-only background layers */}
+            <div className="absolute inset-0 pointer-events-none">
+                <Suspense fallback={<div className="space-bg-container" aria-hidden="true" />}>
+                    <SpaceBackground />
+                </Suspense>
+                <PlanetLayer />
+                <NoiseOverlay />
+                <div className="hero-fog" />
+            </div>
+
             <div
                 ref={contentRef}
                 className="section-container relative z-10 py-20 lg:py-0"
@@ -48,10 +62,10 @@ export default function HeroSection() {
                         variants={variants.fadeInUp}
                         className="mb-6"
                     >
-                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-mono text-neon-500">
+                        {/* <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-mono text-neon-500">
                             <span className="w-2 h-2 rounded-full bg-neon-500 animate-pulse" />
-                            FULL-STACK DEVELOPER
-                        </span>
+                            AVAIABLE TO PROJECTS NOW
+                        </span> */}
                     </motion.div>
 
                     {/* Main Headline */}

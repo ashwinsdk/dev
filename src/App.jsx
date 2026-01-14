@@ -12,8 +12,7 @@ import AboutSection from './components/AboutSection'
 import PricingSection from './components/PricingSection'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
-import BlackOverlay from './components/BlackOverlay'
-import PlanetHero from './components/PlanetHero'
+import { preloadSpaceModel } from './components/SpaceBackground'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -57,17 +56,27 @@ function LoadingScreen() {
 
 export default function App() {
     const [isLoading, setIsLoading] = useState(true)
-    const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
-        setIsMounted(true)
+        let cancelled = false
 
-        // Simulate minimum loading time for assets
-        const timer = setTimeout(() => {
-            setIsLoading(false)
-        }, 1500)
+        // Minimum display time for the loading screen
+        const minDelay = new Promise((resolve) => setTimeout(resolve, 1200))
+        const modelPreload = preloadSpaceModel().catch(() => null)
 
-        return () => clearTimeout(timer)
+        Promise.all([minDelay, modelPreload]).then(() => {
+            if (!cancelled) setIsLoading(false)
+        })
+
+        // Safety timeout in case of network issues
+        const failSafe = setTimeout(() => {
+            if (!cancelled) setIsLoading(false)
+        }, 3500)
+
+        return () => {
+            cancelled = true
+            clearTimeout(failSafe)
+        }
     }, [])
 
     useEffect(() => {
@@ -101,12 +110,6 @@ export default function App() {
             <AnimatePresence mode="wait">
                 {isLoading && <LoadingScreen key="loading" />}
             </AnimatePresence>
-
-            {/* Planet Background */}
-            {isMounted && <PlanetHero />}
-
-            {/* Black overlay for scroll fade effect */}
-            <BlackOverlay />
 
             {/* Main Content */}
             <div className="main-content">

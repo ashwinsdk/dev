@@ -15,10 +15,10 @@ export const highlightedProjects = [
         preview: 'https://rig-ledger.ashwinsdk.store/',
         media: {
             type: 'image',
-            poster: '/projects/rigledger/poster.svg',
+            poster: '/projects/rigledger/poster.png',
             video: null,
             videoFallback: null,
-            screenshots: []
+            screenshots: ['/projects/rigledger/01.jpg', '/projects/rigledger/02.jpg', '/projects/rigledger/03.jpg']
         },
         priority: 1,
         featured: true,
@@ -38,10 +38,10 @@ export const highlightedProjects = [
         preview: 'https://urbandao.ashwinsdk.store/',
         media: {
             type: 'image',
-            poster: '/projects/dataflow/poster.svg',
+            poster: '/projects/urbandao/poster.png',
             video: null,
             videoFallback: null,
-            screenshots: []
+            screenshots: ['/projects/urbandao/preview-01.png', '/projects/urbandao/preview-02.png', '/projects/urbandao/preview-03.png', '/projects/urbandao/preview-04.png', '/projects/urbandao/preview-05.png', '/projects/urbandao/preview-06.png', '/projects/urbandao/preview-07.png', '/projects/urbandao/preview-08.png', '/projects/urbandao/preview-09.png', '/projects/urbandao/preview-010.png', '/projects/urbandao/preview-011.png', '/projects/urbandao/preview-012.png', '/projects/urbandao/preview-013.png', '/projects/urbandao/preview-014.png', '/projects/urbandao/preview-015.png', '/projects/urbandao/preview-016.png',]
         },
         priority: 2,
         featured: true,
@@ -61,10 +61,10 @@ export const highlightedProjects = [
         preview: 'https://project-xylen.ashwinsdk.store/',
         media: {
             type: 'image',
-            poster: '/projects/xylen/poster.svg',
+            poster: '/projects/xylen/poster.png',
             video: null,
             videoFallback: null,
-            screenshots: []
+            screenshots: ['/projects/xylen/preview-01.png', '/projects/xylen/preview-02.png']
         },
         priority: 4,
         featured: true,
@@ -88,7 +88,7 @@ export const moreProjects = [
         title: 'Kairo',
         shortDescription: 'A comprehensive hyperlocal platform connecting residents with verified local service providers and vendors.',
         techStack: ['Flutter', 'Node', 'Docker'],
-        github: 'https://github.com/ashwinsdk/ariyo',
+        github: null,
         preview: null,
         media: {
             poster: '/projects/api-gateway/poster.png',
