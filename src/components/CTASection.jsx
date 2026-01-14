@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { Mail, ArrowRight, Code2, FileCode } from 'lucide-react'
 import { contact } from '../data/projects'
 import { variants } from '../lib/motion'
+import StaticSpaceBackground from './StaticSpaceBackground'
 
 export default function CTASection() {
     const sectionRef = useRef()
@@ -13,13 +14,17 @@ export default function CTASection() {
             ref={sectionRef}
             id="contact"
             className="relative section-padding overflow-hidden"
+            style={{ minHeight: '100vh' }}
         >
-            {/* Grid background with animated intensity */}
-            <div className="absolute inset-0 grid-background opacity-40" />
+            {/* Space Background */}
+            <StaticSpaceBackground />
 
-            {/* Gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-to-b from-dark-500 via-transparent to-dark-500" />
-            <div className="absolute inset-0 bg-gradient-to-r from-dark-500/50 via-transparent to-dark-500/50" />
+            {/* Grid background with animated intensity */}
+            <div className="absolute inset-0 grid-background opacity-20 z-[1]" />
+
+            {/* Gradient overlays - reduced opacity to show stars */}
+            <div className="absolute inset-0 bg-gradient-to-b from-dark-500/80 via-transparent to-dark-500/80 z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-dark-500/30 via-transparent to-dark-500/30 z-[1]" />
 
             <div className="section-container relative z-10">
                 <motion.div

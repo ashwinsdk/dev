@@ -5,6 +5,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { highlightedProjects } from '../data/projects'
 import { variants } from '../lib/motion'
+import ProjectDetailModal from './ProjectDetailModal'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,6 +13,7 @@ export default function HighlightedProjects() {
     const sectionRef = useRef()
     const headerRef = useRef()
     const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+    const [selectedProject, setSelectedProject] = useState(null)
 
     return (
         <section
@@ -59,14 +61,22 @@ export default function HighlightedProjects() {
                         key={project.id}
                         project={project}
                         index={index}
+                        onViewDetails={() => setSelectedProject(project)}
                     />
                 ))}
             </div>
+
+            {/* Project Detail Modal */}
+            <ProjectDetailModal
+                project={selectedProject}
+                isOpen={!!selectedProject}
+                onClose={() => setSelectedProject(null)}
+            />
         </section>
     )
 }
 
-function ProjectPanel({ project, index }) {
+function ProjectPanel({ project, index, onViewDetails }) {
     const panelRef = useRef()
     const isInView = useInView(panelRef, { once: true, margin: '-50px' })
     const [isPlaying, setIsPlaying] = useState(false)
@@ -235,11 +245,21 @@ function ProjectPanel({ project, index }) {
                         variants={variants.staggerItem}
                         className="flex flex-wrap gap-4 pt-4"
                     >
+                        <motion.button
+                            onClick={onViewDetails}
+                            className="btn-primary"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            <ChevronRight className="w-4 h-4" />
+                            View Details
+                        </motion.button>
+
                         <motion.a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-primary"
+                            className="btn-secondary"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >

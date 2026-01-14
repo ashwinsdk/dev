@@ -91,8 +91,8 @@ function PricingCard({ plan, index }) {
 
             <motion.div
                 className={`relative h-full rounded-2xl overflow-hidden ${plan.recommended
-                        ? 'bg-white/10 border-2 border-neon-500/50'
-                        : 'bg-white/5 border border-white/10'
+                    ? 'bg-white/10 border-2 border-neon-500/50'
+                    : 'bg-white/5 border border-white/10'
                     }`}
                 animate={{
                     boxShadow: isHovered
@@ -120,7 +120,7 @@ function PricingCard({ plan, index }) {
                             </span>
                             {plan.price !== 'Free' && plan.price !== 'Custom' && (
                                 <span className="text-sm font-mono px-2 py-0.5 rounded bg-neon-500/10 text-neon-400">
-                                    USD
+                                    10 USD
                                 </span>
                             )}
                         </div>
@@ -140,8 +140,8 @@ function PricingCard({ plan, index }) {
                         target={plan.ctaLink.startsWith('http') ? '_blank' : undefined}
                         rel={plan.ctaLink.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className={`flex items-center justify-between w-full px-5 py-3.5 rounded-lg font-mono text-sm transition-all ${plan.recommended
-                                ? 'bg-neon-500 text-dark-500 hover:bg-neon-400'
-                                : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
+                            ? 'bg-neon-500 text-dark-500 hover:bg-neon-400'
+                            : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
                             }`}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}

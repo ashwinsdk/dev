@@ -41,7 +41,7 @@ export const highlightedProjects = [
             poster: '/projects/urbandao/poster.png',
             video: null,
             videoFallback: null,
-            screenshots: ['/projects/urbandao/preview-01.png', '/projects/urbandao/preview-02.png', '/projects/urbandao/preview-03.png', '/projects/urbandao/preview-04.png', '/projects/urbandao/preview-05.png', '/projects/urbandao/preview-06.png', '/projects/urbandao/preview-07.png', '/projects/urbandao/preview-08.png', '/projects/urbandao/preview-09.png', '/projects/urbandao/preview-010.png', '/projects/urbandao/preview-011.png', '/projects/urbandao/preview-012.png', '/projects/urbandao/preview-013.png', '/projects/urbandao/preview-014.png', '/projects/urbandao/preview-015.png', '/projects/urbandao/preview-016.png',]
+            screenshots: ['/projects/urbandao/poster.png', '/projects/urbandao/preview-02.png', '/projects/urbandao/preview-03.png', '/projects/urbandao/preview-04.png', '/projects/urbandao/preview-05.png', '/projects/urbandao/preview-06.png', '/projects/urbandao/preview-07.png', '/projects/urbandao/preview-08.png', '/projects/urbandao/preview-09.png', '/projects/urbandao/preview-010.png', '/projects/urbandao/preview-011.png', '/projects/urbandao/preview-012.png', '/projects/urbandao/preview-013.png', '/projects/urbandao/preview-014.png', '/projects/urbandao/preview-015.png', '/projects/urbandao/preview-016.png',]
         },
         priority: 2,
         featured: true,
@@ -64,7 +64,7 @@ export const highlightedProjects = [
             poster: '/projects/xylen/poster.png',
             video: null,
             videoFallback: null,
-            screenshots: ['/projects/xylen/preview-01.png', '/projects/xylen/preview-02.png']
+            screenshots: ['/projects/xylen/poster.png', '/projects/xylen/preview-02.png']
         },
         priority: 4,
         featured: true,
