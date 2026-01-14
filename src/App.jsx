@@ -13,6 +13,7 @@ import PricingSection from './components/PricingSection'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
 import { preloadSpaceModel } from './components/SpaceBackground'
+import { preloadCriticalAssets, preloadSecondaryAssets } from './lib/assetPreloader'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -62,16 +63,28 @@ export default function App() {
 
         // Minimum display time for the loading screen
         const minDelay = new Promise((resolve) => setTimeout(resolve, 1200))
-        const modelPreload = preloadSpaceModel().catch(() => null)
 
-        Promise.all([minDelay, modelPreload]).then(() => {
-            if (!cancelled) setIsLoading(false)
+        // Preload critical assets in parallel
+        const criticalLoad = Promise.all([
+            preloadSpaceModel().catch(() => null),
+            preloadCriticalAssets().catch(() => null),
+        ])
+
+        Promise.all([minDelay, criticalLoad]).then(() => {
+            if (!cancelled) {
+                setIsLoading(false)
+                // Start loading secondary assets after main content is visible
+                preloadSecondaryAssets()
+            }
         })
 
-        // Safety timeout in case of network issues
+        // Safety timeout in case of network issues (increased for slower connections)
         const failSafe = setTimeout(() => {
-            if (!cancelled) setIsLoading(false)
-        }, 3500)
+            if (!cancelled) {
+                setIsLoading(false)
+                preloadSecondaryAssets()
+            }
+        }, 5000)
 
         return () => {
             cancelled = true

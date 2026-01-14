@@ -1,12 +1,24 @@
 import { useEffect, useRef, useState, Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import * as THREE from 'three'
+
+// Loading fallback component
+function LoadingFallback() {
+    return (
+        <mesh>
+            <planeGeometry args={[100, 100]} />
+            <meshBasicMaterial color="#000000" />
+        </mesh>
+    )
+}
 
 function OuterSpaceModel() {
     const group = useRef()
     const { scene } = useGLTF('/assets/need_some_space.glb')
     const scrollProgress = useRef(0)
+    const [isReady, setIsReady] = useState(false)
     const [base, setBase] = useState({
         // Start heavily zoomed-in to meet the new default requirement
         scale: 40,
@@ -50,17 +62,22 @@ function OuterSpaceModel() {
         handleScroll()
         updateBase()
 
+        // Mark as ready after scene is loaded
+        if (scene) {
+            setIsReady(true)
+        }
+
         window.addEventListener('scroll', handleScroll, { passive: true })
         window.addEventListener('resize', updateBase)
         return () => {
             window.removeEventListener('scroll', handleScroll)
             window.removeEventListener('resize', updateBase)
         }
-    }, [])
+    }, [scene])
 
     // Scroll-linked zoom (scale) with slight vertical parallax; no rotation
     useFrame(() => {
-        if (group.current) {
+        if (group.current && isReady) {
             const progress = scrollProgress.current
             const targetScale = base.scale * (1 + progress * base.zoomRange)
             group.current.scale.setScalar(targetScale)
@@ -98,14 +115,15 @@ export default function SpaceBackground() {
         <div className="space-bg-container" aria-hidden="true">
             <Canvas
                 camera={{ position: [0, 0, 1], fov: 22, near: 0.01, far: 5000 }}
-                dpr={[1, 1.5]}
+                // Slightly lower max DPR than default to keep FPS high on hi-dpi screens
+                dpr={[1, 1.25]}
                 gl={{
                     antialias: true,
                     alpha: false,
                     powerPreference: 'high-performance',
                 }}
             >
-                <Suspense fallback={null}>
+                <Suspense fallback={<LoadingFallback />}>
                     <Scene />
                 </Suspense>
             </Canvas>
@@ -113,16 +131,45 @@ export default function SpaceBackground() {
     )
 }
 
+// Preload the GLB model immediately
 useGLTF.preload('/assets/need_some_space.glb')
 
-// Export a manual preloader that resolves when the GLB is downloaded.
-// Call this during the app's loading screen to avoid late popping.
+// Export a manual preloader that resolves when the GLB is downloaded and cached.
+// Uses fetch with cache to work with browser cache and service workers.
 let spacePreloadPromise
 export function preloadSpaceModel() {
     if (!spacePreloadPromise) {
-        const loader = new GLTFLoader()
         spacePreloadPromise = new Promise((resolve, reject) => {
-            loader.load('/assets/need_some_space.glb', (gltf) => resolve(gltf), undefined, reject)
+            // First, try to fetch the model to warm up the cache
+            fetch('/assets/need_some_space.glb', {
+                method: 'GET',
+                cache: 'force-cache',
+                credentials: 'same-origin'
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok')
+                    return response.arrayBuffer()
+                })
+                .then(() => {
+                    // Now load with GLTFLoader (should hit cache)
+                    const loader = new GLTFLoader()
+                    loader.load(
+                        '/assets/need_some_space.glb',
+                        (gltf) => resolve(gltf),
+                        undefined,
+                        reject
+                    )
+                })
+                .catch(err => {
+                    // Fallback: try direct GLTFLoader
+                    const loader = new GLTFLoader()
+                    loader.load(
+                        '/assets/need_some_space.glb',
+                        (gltf) => resolve(gltf),
+                        undefined,
+                        reject
+                    )
+                })
         })
     }
     return spacePreloadPromise

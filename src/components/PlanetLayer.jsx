@@ -61,7 +61,7 @@ export default function PlanetLayer() {
         <div ref={containerRef} className="planet-layer">
             <div ref={planetRef} className="planet-wrapper">
                 <img
-                    src="/assets/Planet.png"
+                    src="/assets/planet.webp"
                     alt=""
                     draggable={false}
                     onLoad={() => setIsLoaded(true)}

@@ -2,6 +2,19 @@
   command = "npm run build"
   publish = "dist"
 
+# Enable Netlify's automatic asset optimization
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.images]
+  compress = true
+
+# Security headers for all routes
 [[headers]]
   for = "/*"
   [headers.values]
@@ -10,16 +23,70 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Long-term caching for hashed assets (JS/CSS bundles)
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Encoding = "br, gzip"
+
+[[headers]]
+  for = "/assets/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Encoding = "br, gzip"
+
+# GLB/3D models - aggressive caching + compression hints
+[[headers]]
+  for = "*.glb"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "model/gltf-binary"
+
+[[headers]]
+  for = "/assets/*.glb"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "model/gltf-binary"
+
+# Static images - long caching
+[[headers]]
+  for = "/assets/*.png"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  for = "/assets/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Project images - moderate caching (may update)
+[[headers]]
   for = "/projects/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
 
+# Fonts
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+# HTML - no cache for fresh deploys
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"

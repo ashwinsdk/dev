@@ -101,8 +101,8 @@ export default function PlanetHero() {
                         deviceType === 'mobile'
                             ? '/assets/planet/planet-mobile.png'
                             : deviceType === 'tablet'
-                                ? '/assets/planet/planet.png'
-                                : '/assets/planet/planet.png'
+                                ? '/assets/planet/planet.webp'
+                                : '/assets/planet/planet.webp'
                     }
                     alt=""
                     draggable={false}

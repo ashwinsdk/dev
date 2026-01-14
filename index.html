@@ -18,8 +18,14 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
 
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/assets/ashwinsdk.svg" as="image" />
+    <!-- Preload critical assets - ordered by priority -->
+    <link rel="preload" href="/assets/ashwinsdk.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/assets/need_some_space.glb" as="fetch" crossorigin="anonymous" />
+
+    <!-- Prefetch secondary assets (loaded after initial render) -->
+    <link rel="prefetch" href="/projects/rigledger/poster.png" as="image" />
+    <link rel="prefetch" href="/projects/urbandao/poster.png" as="image" />
+    <link rel="prefetch" href="/projects/xylen/poster.png" as="image" />
 
     <title>ashwinsdk</title>
 
