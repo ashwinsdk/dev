@@ -15,7 +15,7 @@ export const highlightedProjects = [
         preview: 'https://rig-ledger.ashwinsdk.store/',
         media: {
             type: 'image',
-            poster: '/projects/rigledger/poster.png',
+            poster: '/projects/rigledger/poster.webp',
             video: null,
             videoFallback: null,
             screenshots: ['/projects/rigledger/01.jpg', '/projects/rigledger/02.jpg', '/projects/rigledger/03.jpg']
@@ -38,10 +38,10 @@ export const highlightedProjects = [
         preview: 'https://urbandao.ashwinsdk.store/',
         media: {
             type: 'image',
-            poster: '/projects/urbandao/poster.png',
+            poster: '/projects/urbandao/poster.webp',
             video: null,
             videoFallback: null,
-            screenshots: ['/projects/urbandao/poster.png', '/projects/urbandao/preview-02.png', '/projects/urbandao/preview-03.png', '/projects/urbandao/preview-04.png', '/projects/urbandao/preview-05.png', '/projects/urbandao/preview-06.png', '/projects/urbandao/preview-07.png', '/projects/urbandao/preview-08.png', '/projects/urbandao/preview-09.png', '/projects/urbandao/preview-010.png', '/projects/urbandao/preview-011.png', '/projects/urbandao/preview-012.png', '/projects/urbandao/preview-013.png', '/projects/urbandao/preview-014.png', '/projects/urbandao/preview-015.png', '/projects/urbandao/preview-016.png',]
+            screenshots: ['/projects/urbandao/poster.webp', '/projects/urbandao/preview-02.webp', '/projects/urbandao/preview-03.webp', '/projects/urbandao/preview-04.webp', '/projects/urbandao/preview-05.webp', '/projects/urbandao/preview-06.webp', '/projects/urbandao/preview-07.webp', '/projects/urbandao/preview-08.webp', '/projects/urbandao/preview-09.webp', '/projects/urbandao/preview-010.webp', '/projects/urbandao/preview-011.webp', '/projects/urbandao/preview-012.webp', '/projects/urbandao/preview-013.webp', '/projects/urbandao/preview-014.webp', '/projects/urbandao/preview-015.webp', '/projects/urbandao/preview-016.webp',]
         },
         priority: 2,
         featured: true,
@@ -61,10 +61,10 @@ export const highlightedProjects = [
         preview: 'https://project-xylen.ashwinsdk.store/',
         media: {
             type: 'image',
-            poster: '/projects/xylen/poster.png',
+            poster: '/projects/xylen/poster.webp',
             video: null,
             videoFallback: null,
-            screenshots: ['/projects/xylen/poster.png', '/projects/xylen/preview-02.png']
+            screenshots: ['/projects/xylen/poster.webp', '/projects/xylen/preview-02.webp']
         },
         priority: 4,
         featured: true,
@@ -80,7 +80,7 @@ export const moreProjects = [
         github: 'https://github.com/ashwinsdk/metatask',
         preview: 'https://meta-task.ashwinsdk.store/',
         media: {
-            poster: '/projects/cli-toolkit/poster.png',
+            poster: '/projects/cli-toolkit/poster.webp',
         },
     },
     {
@@ -91,7 +91,7 @@ export const moreProjects = [
         github: null,
         preview: null,
         media: {
-            poster: '/projects/api-gateway/poster.png',
+            poster: '/projects/api-gateway/poster.webp',
         },
     },
     {
@@ -102,7 +102,7 @@ export const moreProjects = [
         github: 'https://github.com/ashwinsdk/portfolio',
         preview: 'https://portfolio.ashwinsdk.store/',
         media: {
-            poster: '/projects/ml-pipeline/poster.png',
+            poster: '/projects/ml-pipeline/poster.webp',
         },
     },
     {
@@ -113,7 +113,7 @@ export const moreProjects = [
         github: 'https://github.com/ashwinsdk/grievx',
         preview: 'https://grievx.ashwinsdk.store/',
         media: {
-            poster: '/projects/design-system/poster.png',
+            poster: '/projects/design-system/poster.webp',
         },
     },
 ]

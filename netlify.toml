@@ -51,7 +51,7 @@
 
 # Static images - long caching
 [[headers]]
-  for = "/assets/*.png"
+  for = "/assets/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 

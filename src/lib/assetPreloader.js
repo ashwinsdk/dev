@@ -94,9 +94,9 @@ export const criticalAssets = {
  */
 export const secondaryAssets = {
     projectPosters: [
-        '/projects/rigledger/poster.png',
-        '/projects/urbandao/poster.png',
-        '/projects/xylen/poster.png',
+        '/projects/rigledger/poster.webp',
+        '/projects/urbandao/poster.webp',
+        '/projects/xylen/poster.webp',
     ],
 }
 

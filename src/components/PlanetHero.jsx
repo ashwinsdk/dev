@@ -99,7 +99,7 @@ export default function PlanetHero() {
                 <img
                     src={
                         deviceType === 'mobile'
-                            ? '/assets/planet/planet-mobile.png'
+                            ? '/assets/planet/planet-mobile.webp'
                             : deviceType === 'tablet'
                                 ? '/assets/planet/planet.webp'
                                 : '/assets/planet/planet.webp'
