@@ -18,7 +18,7 @@ export const highlightedProjects = [
             poster: '/projects/rigledger/poster.webp',
             video: null,
             videoFallback: null,
-            screenshots: ['/projects/rigledger/01.jpg', '/projects/rigledger/02.jpg', '/projects/rigledger/03.jpg']
+            screenshots: ['/projects/rigledger/preview-03.webp', '/projects/rigledger/preview-02.webp', '/projects/rigledger/preview-01.webp', '/projects/rigledger/preview-04.webp', '/projects/rigledger/preview-05.webp', '/projects/rigledger/preview-06.webp', '/projects/rigledger/preview-07.webp', '/projects/rigledger/preview-08.webp',]
         },
         priority: 1,
         featured: true,
