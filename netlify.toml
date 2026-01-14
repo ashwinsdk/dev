@@ -28,13 +28,11 @@
   for = "/assets/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "br, gzip"
 
 [[headers]]
   for = "/assets/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "br, gzip"
 
 # GLB/3D models - aggressive caching + compression hints
 [[headers]]
